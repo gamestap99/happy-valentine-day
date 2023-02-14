@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="home-text">
+    <h1>Happy Valentines Day!</h1>
+    <div class="animate-text">
+        <span class="span-text">Fist, I Love You!!!</span>
+        <span class="span-text">Hay ăn chóng lớn =>></span>
+        <span class="span-text">Cầu được ước thấy</span>
+        <span class="span-text">Bớt nghĩ tiêu cực ^^</span>
+        <span class="span-text">Mong mọi điều tốt lành sẽ đến với em ^^</span>
+        <span class="span-text">Yêu anh nhiều hơn <3</span>
+        <span class="span-text">Vạn sự khó có anh lo!!!</span>
+    </div>
+</div>
+<p id="clickHere" style="text-align: center">Bé yêu à! Mời bé nhấn chuột để thấy điều kì diệu ^^.</p>
+<canvas id="c" width="500" height="500"></canvas>
+
+<script src="canavas.js">
+</script>
+
+<script>
+    const txts=document.querySelector(".animate-text").children,
+        txtsLen=txts.length;
+    let index=0;
+    const textInTimer=3000,
+        textOutTimer=2800;
+
+    function animateText() {
+        for(let i=0; i<txtsLen; i++){
+            txts[i].classList.remove("text-in","text-out");
+        }
+        txts[index].classList.add("text-in");
+
+        setTimeout(function(){
+            txts[index].classList.add("text-out");
+        },textOutTimer)
+
+        setTimeout(function(){
+
+            if(index == txtsLen-1){
+                index=0;
+            }
+            else{
+                index++;
+            }
+            animateText();
+        },textInTimer);
+    }
+
+    window.onload=animateText;
+
+</script>
+</body>
+</html>
